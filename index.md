@@ -1,2 +1,2 @@
 # Reasoning Machine
-[Page 1](./pages/page_1)
+[Page 1](./pages/page_1.html)

@@ -1,6 +1,6 @@
 ---
 layout: home
-title: Site Name
+title: Reasoning Machine
 ---
 # Github.io template. Index
 <pre>

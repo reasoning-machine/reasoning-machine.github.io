@@ -1,12 +1,10 @@
 ---
 layout: page
-title: communication
+title: Reasoning Machine
 ---
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Reasoning Machine</title>
     <style>
         body { font-family: sans-serif; margin: 20px; background-color: #e6f7ff; }
         .container { max-width: 600px; margin: auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }

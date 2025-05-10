@@ -1,14 +1,116 @@
 ---
 layout: page
-title: MathJax formulas
+title: communication
 ---
-{% include lib/mathjax.html %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Reasoning Machine</title>
+    <style>
+        body { font-family: sans-serif; margin: 20px; background-color: #e6f7ff; }
+        .container { max-width: 600px; margin: auto; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+        h1 { color: #0056b3; }
+        #messages { border: 1px solid #ccc; height: 200px; overflow-y: scroll; padding: 10px; margin-bottom: 10px; background-color: #f9f9f9; }
+        .message-input input { width: calc(100% - 100px); padding: 8px; margin-right: 5px; }
+        .message-input button { padding: 8px 15px; }
+        .actions button { margin-top: 10px; margin-right: 5px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Reasoning Machine</h1>
+        <div id="messages"></div>
+        <div class="message-input">
+            <input type="text" id="customMessage" placeholder="Type a message...">
+            <button onclick="sendCustomMessage()">Send</button>
+        </div>
+        <div class="actions">
+            <button onclick="sendGreeting()">Send Greeting</button>
+            <button onclick="raiseHand()">Raise Hand</button>
+        </div>
+    </div>
 
-$$
-  \Huge
-  \begin{align*}
-  d &\mid b \\
-  \hline
-  q &\mid p
-  \end{align*}
-$$
+    <script>
+        const messagesDiv = document.getElementById('messages');
+        const customMessageInput = document.getElementById('customMessage');
+        let myTitle = "Reasoning Machine"; // Should match <title>
+
+        function displayMessage(text) {
+            const p = document.createElement('p');
+            p.textContent = text;
+            messagesDiv.appendChild(p);
+            messagesDiv.scrollTop = messagesDiv.scrollHeight;
+        }
+
+        function sendMessageToHub(messageContent) {
+            if (window.machinaApi && window.machinaApi.sendMessage) {
+                const fullMessage = `${myTitle}: ${messageContent}`;
+                window.machinaApi.sendMessage(fullMessage);
+                displayMessage(`Me: ${messageContent}`); // Display own sent message
+                customMessageInput.value = ''; // Clear input after sending
+            } else {
+                displayMessage("Error: Machina Ratiocinatrix API not available.");
+                console.warn("Attempted to send message, but machinaApi not found.");
+            }
+        }
+
+        function sendCustomMessage() {
+            const messageText = customMessageInput.value.trim();
+            if (messageText) {
+                sendMessageToHub(messageText);
+            }
+        }
+
+        function sendGreeting() {
+            sendMessageToHub("Hello, this is Reasoning Machine!");
+        }
+
+        function raiseHand() {
+            sendMessageToHub("I have something to say.");
+        }
+
+        // Listen for messages from the extension
+        document.addEventListener('machinaMessage', (event) => {
+            if (event.detail && event.detail.text) {
+                const receivedText = event.detail.text;
+                displayMessage(receivedText);
+
+                // Auto-reply logic (simple example)
+                if (!receivedText.startsWith(myTitle + ":")) { // Don't reply to our own messages
+                    if (receivedText.toLowerCase().includes("hello from guessing machine")) {
+                        setTimeout(() => sendMessageToHub("Hi Guessing Machine, good to hear from you!"), 1000);
+                    } else if (!receivedText.toLowerCase().includes("good to hear from you")) { // Avoid loop
+                         // Generic ack for other messages not from self
+                        setTimeout(() => sendMessageToHub(`Acknowledged: "${receivedText.split(': ')[1].substring(0,20)}..."`), 1500);
+                    }
+                }
+            }
+        });
+
+        // Check if API is ready and update title (in case title loads late, though unlikely for static title)
+        window.addEventListener('load', () => {
+            if (window.machinaApi && window.machinaApi.getPageTitle) {
+                myTitle = window.machinaApi.getPageTitle(); // Sync with title seen by content script
+                document.querySelector('h1').textContent = myTitle; // Ensure H1 matches
+            } else {
+                 // Poll for a few seconds for the API to become available
+                let attempts = 0;
+                const intervalId = setInterval(() => {
+                    attempts++;
+                    if (window.machinaApi && window.machinaApi.getPageTitle) {
+                        myTitle = window.machinaApi.getPageTitle();
+                        document.querySelector('h1').textContent = myTitle;
+                        clearInterval(intervalId);
+                        console.log("Machina API ready after polling.");
+                    } else if (attempts > 10) { // Stop after 5 seconds
+                        clearInterval(intervalId);
+                        console.warn("Machina API did not become available.");
+                         displayMessage("Warning: Connection to Machina Ratiocinatrix might be unavailable.");
+                    }
+                }, 500);
+            }
+        });
+    </script>
+</body>
+</html>

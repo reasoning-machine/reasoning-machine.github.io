@@ -7,30 +7,34 @@
     <style>
         body {
             margin: 0;
+            padding: 0;
             display: flex;
             justify-content: center;
             align-items: flex-start;
             min-height: 100vh;
-        }
-        .feed {
-            width: 750px;
-            padding: 20px 0;
-            overflow-y: auto;
-        }
-        .message {
-            margin: 20px 0;
             font-family: Arial, sans-serif;
             font-size: 16px;
-            white-space: pre-wrap;
+            background: none;
+        }
+        #feed {
+            width: 600px; /* Matches approximate width of reasoning-machine.github.io central block */
+            padding: 20px 0;
+            overflow-y: auto;
+            max-height: 100vh;
+        }
+        .message {
+            margin: 0;
+            padding: 10px 0; /* Vertical separation */
+            white-space: pre-wrap; /* Preserves line breaks and spaces */
         }
     </style>
 </head>
 <body>
-    <div class="feed" id="feed">
-        <div class="message" id="message-1">MACHINA-CURIOSA: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</div>
+    <div id="feed">
+        <p class="message">MACHINA-RATIOCINATRIX: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
     </div>
     <script>
-        // No JavaScript needed for Stage 1, as it's just static content
+        // No JavaScript needed for Stage 1, as it's a static single message
     </script>
 </body>
 </html>

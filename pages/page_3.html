@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversation Feed</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            min-height: 100vh;
+            background: none;
+        }
+        #feed {
+            width: 790px; /* Accommodates emphasized frame */
+            padding: 0; /* No extra spacing */
+            overflow-y: auto;
+            max-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Center messages within feed */
+        }
+        .message {
+            margin: 0;
+            padding: 8px 0; /* Vertical separation between messages */
+        }
+        .emphasized {
+            border: 1px solid black; /* 1-pixel frame */
+            border-radius: 5px; /* Rounded corners */
+            width: 790px; /* Frame width, extends 20px each side of 750px content */
+            padding: 10px; /* Controls top/bottom/left/right spacing to frame */
+            box-sizing: border-box; /* Ensures padding is included in width */
+        }
+        .emphasized p {
+            margin: 0; /* Remove default <p> margins */
+            padding: 0 10px; /* Equal left/right spacing to match top/bottom */
+            line-height: 1.2; /* Normalize line spacing */
+            white-space: pre-wrap; /* Preserves line breaks and spaces */
+            display: block; /* Ensure block behavior */
+            box-sizing: border-box; /* Prevent overflow */
+        }
+        .message p {
+            margin: 0; /* Remove default <p> margins */
+            padding: 0 10px; /* Consistent padding with emphasized */
+            line-height: 1.2; /* Normalize line spacing */
+            white-space: pre-wrap; /* Preserves line breaks and spaces */
+            display: block; /* Ensure block behavior */
+            box-sizing: border-box; /* Prevent overflow */
+        }
+    </style>
+</head>
+<body>
+    <div id="feed">
+        <div class="message">
+            <p>MACHINA-RATIOCINATRIX: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+        </div>
+        <div class="message">
+            <p>MACHINA-OBSERVATRIX: Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia.</p>
+        </div>
+        <div class="message emphasized">
+            <p>Reasoning-machine: Consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.</p>
+        </div>
+        <div class="message">
+            <p>MACHINA-CURIOSA: Quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
+        </div>
+        <div class="message">
+            <p>MACHINA-RATIOCINATRIX: Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+    </div>
+    <script>
+        // No JavaScript needed for Stage 3, as it's a static feed with multiple messages
+    </script>
+</body>
+</html>

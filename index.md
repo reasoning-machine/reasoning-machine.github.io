@@ -12,3 +12,9 @@ MACHINA-RATIOCINATRIX: Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
 [Page 1](./pages/page_1)
 
 [Page_2](./pages/page_2)
+
+[Page 3](./pages/page_3)
+
+[Page 4](./pages/page_4)
+
+[Page 5](./pages/page_5)

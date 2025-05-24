@@ -18,11 +18,11 @@ self.onmessage = async function(event) {
         let instructionText; // Declare here to ensure it's in scope
         try {
             console.log('Worker: Fetching instruction from https://localhost');
-            const instructionResponse = await fetch('https://localhost/machina.txt');
+            const instructionResponse = await fetch('https://localhost/reasoning.txt');
             if (!instructionResponse.ok) {
                  console.log(`Worker: HTTP error fetching instruction! status: ${instructionResponse.status}. Using default instruction.`);
                  // Default instruction if fetching fails or file not found
-                 instructionText = "You are a helpful assistant.";
+                 instructionText = "You are a helpful reasoning assistant.";
             } else {
                 instructionText = (await instructionResponse.text()).trim();
                 console.log('Worker: Instruction fetched successfully.');
@@ -30,7 +30,7 @@ self.onmessage = async function(event) {
             }
         } catch (fetchError) {
             console.error('Worker: Error during instruction file fetch:', fetchError.message, '. Using default instruction.');
-            instructionText = "You are a helpful assistant."; // Default instruction on any fetch error
+            instructionText = "You are a helpful reasoningassistant."; // Default instruction on any fetch error
         }
 
         // --- 3. Prepare messages for the API call ---

@@ -11,6 +11,10 @@ title: Reasoning Machine
 
 [Reasoning-Machine (meta)](https://reasoning-machine.github.io/meta/)
 
+[Reasoning-Machine (gemini)](https://reasoning-machine.github.io/gemini/)
+
+[Reasoning-Machine (oaio)](https://reasoning-machine.github.io/oaio/)
+
 [Reasoning-Machine (openai)](https://reasoning-machine.github.io/openai/)
 
 [Reasoning-Machine (fireworks)](https://reasoning-machine.github.io/fireworks/)

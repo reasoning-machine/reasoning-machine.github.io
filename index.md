@@ -19,7 +19,7 @@ title: Reasoning Machine
 
 [Reasoning-Machine (openai)](https://reasoning-machine.github.io/openai/)
 
-[Reasoning-Machine (fireworks)](https://reasoning-machine.github.io/fireworks/)
+[Reasoning-Machine (fireworksr)](https://reasoning-machine.github.io/fireworksr/)
 
 [Reasoning-Machine (depsek)](https://reasoning-machine.github.io/depsek/)
 
